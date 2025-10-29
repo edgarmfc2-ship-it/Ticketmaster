@@ -152,15 +152,22 @@ const EventDetails = () => {
                     className="border rounded-lg p-4 flex items-center justify-between hover:border-blue-500 transition"
                   >
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg capitalize">
+                      <h3 className="font-semibold text-lg">
                         {ticketType === 'general' ? 'General' : 
                          ticketType === 'vip' ? 'VIP' :
                          ticketType === 'palco' ? 'Palco' :
-                         ticketType === 'preferencial' ? 'Preferencial' :
+                         ticketType === 'preferencial' ? 'Preferencial (+18 años)' :
                          ticketType === 'platino' ? 'Platino' :
+                         ticketType === 'platino125_132' ? 'Platino 125-132 (+18 años)' :
                          ticketType === 'oro' ? 'Oro' :
-                         ticketType === 'vipnorte' ? 'VIP Norte' :
-                         ticketType === 'vipsur' ? 'VIP Sur' : ticketType}
+                         ticketType === 'oro117_123' ? 'Oro 117, 119, 121, 123 (Menores +7 años)' :
+                         ticketType === 'oro118_124' ? 'Oro 118, 120, 122, 124 (+18 años)' :
+                         ticketType === 'loc110_116' ? 'Localidad 110, 112, 114, 116 (+18 años)' :
+                         ticketType === 'loc109_115' ? 'Localidad 109, 111, 113, 115 (Menores +7 años)' :
+                         ticketType === 'vipnorte' ? 'VIP Norte (Menores +7 años)' :
+                         ticketType === 'vipsur' ? 'VIP Sur (+18 años)' :
+                         ticketType === 'palco102_108' ? 'Palco 102, 104, 106, 108 (+18 años)' :
+                         ticketType === 'palco101_107' ? 'Palco 101, 103, 105, 107 (Menores +7 años)' : ticketType}
                       </h3>
                       <p className="text-2xl font-bold text-blue-600">
                         ${price.toLocaleString('es-CO')}
