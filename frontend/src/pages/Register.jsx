@@ -61,7 +61,7 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-blue-600 mb-2">TicketHub</h1>
+          <h1 className="text-3xl font-bold text-blue-600 mb-2">ticketmaster</h1>
           <h2 className="text-2xl font-semibold mb-2">Crear Cuenta</h2>
           <p className="text-gray-600">Regístrate para comprar tickets</p>
         </div>
