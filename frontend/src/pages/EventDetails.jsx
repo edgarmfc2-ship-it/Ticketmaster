@@ -213,7 +213,11 @@ const EventDetails = () => {
                             {quantity}x {ticketType === 'general' ? 'General' : 
                              ticketType === 'vip' ? 'VIP' :
                              ticketType === 'palco' ? 'Palco' :
-                             ticketType === 'preferencial' ? 'Preferencial' : ticketType}
+                             ticketType === 'preferencial' ? 'Preferencial' :
+                             ticketType === 'platino' ? 'Platino' :
+                             ticketType === 'oro' ? 'Oro' :
+                             ticketType === 'vipnorte' ? 'VIP Norte' :
+                             ticketType === 'vipsur' ? 'VIP Sur' : ticketType}
                           </span>
                           <span className="font-semibold">
                             ${(event.prices[ticketType] * quantity).toLocaleString('es-CO')}
