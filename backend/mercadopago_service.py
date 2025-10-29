@@ -67,8 +67,12 @@ class MercadoPagoService:
             }
 
             logger.info(f"Creating Mercado Pago preference for order {external_reference}")
+            logger.info(f"Preference data: {preference_data}")
             result = self.sdk.preference().create(preference_data)
 
+            logger.info(f"Mercado Pago response status: {result['status']}")
+            logger.info(f"Mercado Pago response: {result}")
+            
             if result["status"] == 201:
                 response = result["response"]
                 logger.info(f"Preference created successfully: {response.get('id')}")
@@ -79,6 +83,7 @@ class MercadoPagoService:
                 }
             else:
                 logger.error(f"Failed to create preference. Status: {result['status']}")
+                logger.error(f"Error response: {result.get('response', {})}")
                 return None
 
         except Exception as e:
