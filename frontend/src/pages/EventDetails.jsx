@@ -156,7 +156,11 @@ const EventDetails = () => {
                         {ticketType === 'general' ? 'General' : 
                          ticketType === 'vip' ? 'VIP' :
                          ticketType === 'palco' ? 'Palco' :
-                         ticketType === 'preferencial' ? 'Preferencial' : ticketType}
+                         ticketType === 'preferencial' ? 'Preferencial' :
+                         ticketType === 'platino' ? 'Platino' :
+                         ticketType === 'oro' ? 'Oro' :
+                         ticketType === 'vipnorte' ? 'VIP Norte' :
+                         ticketType === 'vipsur' ? 'VIP Sur' : ticketType}
                       </h3>
                       <p className="text-2xl font-bold text-blue-600">
                         ${price.toLocaleString('es-CO')}
