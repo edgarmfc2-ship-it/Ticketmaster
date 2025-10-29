@@ -59,7 +59,7 @@ export const mockEvents = [
     location: 'Manizales',
     date: '2026-01-10',
     time: '18:00',
-    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&q=80',
+    image: '/concierto-feria.jpeg',
     description: 'Gran concierto de feria con los mejores artistas colombianos',
     prices: {
       general: 120000,
