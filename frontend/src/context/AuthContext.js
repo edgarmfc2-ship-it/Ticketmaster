@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { authAPI } from '../services/api';
 
 const AuthContext = createContext();
 
@@ -23,30 +24,38 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
-    // Mock login - in production this would call your backend
-    const mockUser = {
-      id: '1',
-      name: 'Usuario Demo',
-      email: email,
-      token: 'mock-jwt-token'
-    };
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    return Promise.resolve(mockUser);
+  const login = async (email, password) => {
+    try {
+      const response = await authAPI.login(email, password);
+      const userData = {
+        id: response.data.user.id,
+        name: response.data.user.name,
+        email: response.data.user.email,
+        token: response.data.access_token
+      };
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
+      return userData;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Error al iniciar sesión');
+    }
   };
 
-  const register = (name, email, password) => {
-    // Mock register
-    const mockUser = {
-      id: '2',
-      name: name,
-      email: email,
-      token: 'mock-jwt-token'
-    };
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    return Promise.resolve(mockUser);
+  const register = async (name, email, password) => {
+    try {
+      const response = await authAPI.register(name, email, password);
+      const userData = {
+        id: response.data.user.id,
+        name: response.data.user.name,
+        email: response.data.user.email,
+        token: response.data.access_token
+      };
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
+      return userData;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Error al registrar usuario');
+    }
   };
 
   const logout = () => {
