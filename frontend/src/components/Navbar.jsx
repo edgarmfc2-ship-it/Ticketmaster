@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold italic">ticketmaster</span>
+            <span className="text-2xl font-bold italic">TicketHub</span>
           </Link>
 
           {/* Desktop Search */}
