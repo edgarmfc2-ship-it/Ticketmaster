@@ -272,15 +272,18 @@ async def get_user_tickets(current_user: dict = Depends(get_current_user)):
 
 @app.get("/payment/success")
 async def payment_success(order_id: str):
-    return RedirectResponse(url=f"http://localhost:3000/?payment=success&order_id={order_id}")
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+    return RedirectResponse(url=f"{frontend_url}/?payment=success&order_id={order_id}")
 
 @app.get("/payment/failure")
 async def payment_failure(order_id: str):
-    return RedirectResponse(url=f"http://localhost:3000/?payment=failure&order_id={order_id}")
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+    return RedirectResponse(url=f"{frontend_url}/?payment=failure&order_id={order_id}")
 
 @app.get("/payment/pending")
 async def payment_pending(order_id: str):
-    return RedirectResponse(url=f"http://localhost:3000/?payment=pending&order_id={order_id}")
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+    return RedirectResponse(url=f"{frontend_url}/?payment=pending&order_id={order_id}")
 
 
 # Include the router in the main app
