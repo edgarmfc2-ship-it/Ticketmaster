@@ -216,15 +216,22 @@ const EventDetails = () => {
                       .filter(([, quantity]) => quantity > 0)
                       .map(([ticketType, quantity]) => (
                         <div key={ticketType} className="flex justify-between text-sm">
-                          <span className="capitalize">
+                          <span>
                             {quantity}x {ticketType === 'general' ? 'General' : 
                              ticketType === 'vip' ? 'VIP' :
                              ticketType === 'palco' ? 'Palco' :
                              ticketType === 'preferencial' ? 'Preferencial' :
                              ticketType === 'platino' ? 'Platino' :
+                             ticketType === 'platino125_132' ? 'Platino 125-132' :
                              ticketType === 'oro' ? 'Oro' :
+                             ticketType === 'oro117_123' ? 'Oro 117-123' :
+                             ticketType === 'oro118_124' ? 'Oro 118-124' :
+                             ticketType === 'loc110_116' ? 'Loc 110-116' :
+                             ticketType === 'loc109_115' ? 'Loc 109-115' :
                              ticketType === 'vipnorte' ? 'VIP Norte' :
-                             ticketType === 'vipsur' ? 'VIP Sur' : ticketType}
+                             ticketType === 'vipsur' ? 'VIP Sur' :
+                             ticketType === 'palco102_108' ? 'Palco 102-108' :
+                             ticketType === 'palco101_107' ? 'Palco 101-107' : ticketType}
                           </span>
                           <span className="font-semibold">
                             ${(event.prices[ticketType] * quantity).toLocaleString('es-CO')}
