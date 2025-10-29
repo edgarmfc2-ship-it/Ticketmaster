@@ -26,52 +26,37 @@ class MercadoPagoService:
                 items.append({
                     "id": item["event_id"],
                     "title": f"{item['event_name']} - {item['ticket_type'].upper()}",
-                    "description": f"Entrada {item['ticket_type']} para {item['event_name']}",
-                    "category_id": "tickets",
                     "quantity": item["quantity"],
                     "unit_price": float(item["price"]),
                     "currency_id": "COP"
                 })
 
-            # Build payer data - only include fields if they have values
-            payer_data = {
-                "email": order_data.get("buyer_email")
-            }
-            
-            if order_data.get("buyer_name"):
-                payer_data["name"] = order_data.get("buyer_name")
-            
-            if order_data.get("buyer_phone"):
-                payer_data["phone"] = {
-                    "number": order_data.get("buyer_phone")
-                }
-            
-            if order_data.get("buyer_id_number"):
-                payer_data["identification"] = {
-                    "type": "CC",
-                    "number": order_data.get("buyer_id_number")
-                }
-            
+            # Simplified preference data - only required fields
             preference_data = {
                 "items": items,
-                "payer": payer_data,
+                "payer": {
+                    "email": order_data.get("buyer_email")
+                },
                 "back_urls": {
                     "success": f"{self.base_url}/payment/success?order_id={external_reference}",
                     "failure": f"{self.base_url}/payment/failure?order_id={external_reference}",
                     "pending": f"{self.base_url}/payment/pending?order_id={external_reference}"
                 },
-                "auto_return": "approved",
-                "external_reference": external_reference,
-                "notification_url": f"{self.base_url}/api/webhooks/mercadopago",
-                "statement_descriptor": "TICKETMASTER"
+                "external_reference": external_reference
             }
+            
+            # Add optional fields only if they have values
+            if order_data.get("buyer_name"):
+                preference_data["payer"]["name"] = order_data.get("buyer_name")
+            
+            # Add notification URL if base_url is not localhost
+            if "localhost" not in self.base_url:
+                preference_data["notification_url"] = f"{self.base_url}/api/webhooks/mercadopago"
 
             logger.info(f"Creating Mercado Pago preference for order {external_reference}")
-            logger.info(f"Preference data: {preference_data}")
             result = self.sdk.preference().create(preference_data)
 
             logger.info(f"Mercado Pago response status: {result['status']}")
-            logger.info(f"Mercado Pago response: {result}")
             
             if result["status"] == 201:
                 response = result["response"]
@@ -88,6 +73,8 @@ class MercadoPagoService:
 
         except Exception as e:
             logger.error(f"Error creating Mercado Pago preference: {str(e)}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
             return None
 
     def get_payment_info(self, payment_id: str) -> Optional[Dict[str, Any]]:
