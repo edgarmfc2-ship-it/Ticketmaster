@@ -33,19 +33,28 @@ class MercadoPagoService:
                     "currency_id": "COP"
                 })
 
+            # Build payer data - only include fields if they have values
+            payer_data = {
+                "email": order_data.get("buyer_email")
+            }
+            
+            if order_data.get("buyer_name"):
+                payer_data["name"] = order_data.get("buyer_name")
+            
+            if order_data.get("buyer_phone"):
+                payer_data["phone"] = {
+                    "number": order_data.get("buyer_phone")
+                }
+            
+            if order_data.get("buyer_id_number"):
+                payer_data["identification"] = {
+                    "type": "CC",
+                    "number": order_data.get("buyer_id_number")
+                }
+            
             preference_data = {
                 "items": items,
-                "payer": {
-                    "name": order_data.get("buyer_name", "Comprador"),
-                    "email": order_data.get("buyer_email"),
-                    "phone": {
-                        "number": order_data.get("buyer_phone", "")
-                    },
-                    "identification": {
-                        "type": "CC",
-                        "number": order_data.get("buyer_id_number", "")
-                    }
-                },
+                "payer": payer_data,
                 "back_urls": {
                     "success": f"{self.base_url}/payment/success?order_id={external_reference}",
                     "failure": f"{self.base_url}/payment/failure?order_id={external_reference}",
@@ -54,8 +63,7 @@ class MercadoPagoService:
                 "auto_return": "approved",
                 "external_reference": external_reference,
                 "notification_url": f"{self.base_url}/api/webhooks/mercadopago",
-                "statement_descriptor": "TICKETMASTER",
-                "expires": False
+                "statement_descriptor": "TICKETMASTER"
             }
 
             logger.info(f"Creating Mercado Pago preference for order {external_reference}")
