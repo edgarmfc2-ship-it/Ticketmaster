@@ -9,7 +9,7 @@ export const mockEvents = [
     location: 'Bogotá',
     date: '2026-05-16',
     time: '20:00',
-    image: 'https://images.unsplash.com/photo-1470229538611-16a28b4fa6ec?w=800&q=80',
+    image: '/ed-sheeran.jpg',
     description: 'Ed Sheeran regresa a Colombia con su Loop Tour 2026',
     prices: {
       general: 180000,
