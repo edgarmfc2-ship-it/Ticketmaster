@@ -31,7 +31,7 @@ export const mockEvents = [
     location: 'Bogotá',
     date: '2025-11-01',
     time: '21:00',
-    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80',
+    image: '/estoy-aqui.png',
     description: 'Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran',
     prices: {
       preferencial: 360000,
