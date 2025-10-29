@@ -32,7 +32,7 @@ export const mockEvents = [
     date: '2025-11-01',
     time: '21:00',
     image: '/estoy-aqui.png',
-    description: 'Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran',
+    description: 'Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran. 1 de noviembre de 2025, Bogotá - Vive Claro',
     prices: {
       preferencial: 360000,
       platino: 480000,
