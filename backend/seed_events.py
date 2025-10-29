@@ -18,7 +18,7 @@ events_data = [
         "location": "Bogotá",
         "date": "2026-05-16",
         "time": "20:00",
-        "image": "https://images.unsplash.com/photo-1470229538611-16a28b4fa6ec?w=800&q=80",
+        "image": "https://tickethub-31.preview.emergentagent.com/ed-sheeran.jpg",
         "description": "Ed Sheeran regresa a Colombia con su Loop Tour 2026",
         "prices": {"general": 180000, "vip": 450000, "palco": 850000},
         "available_tickets": {"general": 50, "vip": 20, "palco": 5}
@@ -32,7 +32,7 @@ events_data = [
         "location": "Bogotá",
         "date": "2025-11-01",
         "time": "21:00",
-        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80",
+        "image": "https://tickethub-31.preview.emergentagent.com/estoy-aqui.png",
         "description": "Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran. 1 de noviembre de 2025, Bogotá - Vive Claro",
         "prices": {"preferencial": 360000, "platino": 480000, "oro": 600000, "vipnorte": 961000, "vipsur": 961000, "palco": 1081000},
         "available_tickets": {"preferencial": 150, "platino": 80, "oro": 100, "vipnorte": 40, "vipsur": 40, "palco": 20}
@@ -46,7 +46,7 @@ events_data = [
         "location": "Manizales",
         "date": "2026-01-10",
         "time": "18:00",
-        "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&q=80",
+        "image": "https://tickethub-31.preview.emergentagent.com/concierto-feria.jpeg",
         "description": "Gran concierto de feria con los mejores artistas colombianos",
         "prices": {"general": 120000, "vip": 350000},
         "available_tickets": {"general": 200, "vip": 50}
