@@ -32,16 +32,22 @@ export const mockEvents = [
     date: '2025-11-01',
     time: '21:00',
     image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80',
-    description: 'Shakira en concierto con su nuevo tour mundial',
+    description: 'Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran',
     prices: {
-      general: 250000,
-      vip: 580000,
-      palco: 1200000
+      preferencial: 360000,
+      platino: 480000,
+      oro: 600000,
+      vipnorte: 961000,
+      vipsur: 961000,
+      palco: 1081000
     },
     availableTickets: {
-      general: 100,
-      vip: 30,
-      palco: 10
+      preferencial: 150,
+      platino: 80,
+      oro: 100,
+      vipnorte: 40,
+      vipsur: 40,
+      palco: 20
     }
   },
   {
