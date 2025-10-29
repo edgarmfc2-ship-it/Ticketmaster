@@ -33,9 +33,31 @@ events_data = [
         "date": "2025-11-01",
         "time": "21:00",
         "image": "https://tickethub-31.preview.emergentagent.com/estoy-aqui.png",
-        "description": "Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran. 1 de noviembre de 2025, Bogotá - Vive Claro",
-        "prices": {"preferencial": 360000, "platino": 480000, "oro": 600000, "vipnorte": 961000, "vipsur": 961000, "palco": 1081000},
-        "available_tickets": {"preferencial": 150, "platino": 80, "oro": 100, "vipnorte": 40, "vipsur": 40, "palco": 20}
+        "description": "Shakira en concierto con su nuevo tour mundial - Las Mujeres Ya No Lloran. 1 de noviembre de 2025, Bogotá - Vive Claro. Incluye todas las zonas del estadio con precios oficiales.",
+        "prices": {
+            "preferencial": 360000,
+            "platino125_132": 480000,
+            "oro117_123": 600000,
+            "oro118_124": 600000,
+            "loc110_116": 721000,
+            "loc109_115": 721000,
+            "vipnorte": 961000,
+            "vipsur": 961000,
+            "palco102_108": 1081000,
+            "palco101_107": 1081000
+        },
+        "available_tickets": {
+            "preferencial": 200,
+            "platino125_132": 100,
+            "oro117_123": 80,
+            "oro118_124": 80,
+            "loc110_116": 60,
+            "loc109_115": 60,
+            "vipnorte": 40,
+            "vipsur": 40,
+            "palco102_108": 20,
+            "palco101_107": 20
+        }
     },
     {
         "id": "evt003",
