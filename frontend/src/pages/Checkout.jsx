@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { orderAPI } from '../services/api';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
@@ -33,25 +34,49 @@ const Checkout = () => {
     e.preventDefault();
     setProcessing(true);
 
-    // Simulate payment processing
-    setTimeout(() => {
-      // Mock: Generate payment link for Mercado Pago
-      // In production, this would call your backend API
-      const mockPaymentLink = 'https://link.mercadopago.com.co/wwwtiquetesbaratos';
+    try {
+      // Prepare order data
+      const orderData = {
+        items: cart.map(item => ({
+          event_id: item.eventId,
+          event_name: item.eventName,
+          ticket_type: item.ticketType,
+          quantity: item.quantity,
+          price: item.price,
+          total: item.total
+        })),
+        buyer_name: billingInfo.fullName,
+        buyer_email: billingInfo.email,
+        buyer_phone: billingInfo.phone,
+        buyer_id_number: billingInfo.idNumber
+      };
+
+      // Create order and get payment link
+      const response = await orderAPI.createOrder(orderData);
       
       toast({
         title: 'Redirigiendo a Mercado Pago',
         description: 'Serás redirigido para completar el pago'
       });
 
-      // Redirect to payment link
-      window.location.href = mockPaymentLink;
-      
-      // Clear cart after redirect
+      // Store order ID for later
+      localStorage.setItem('pending_order_id', response.data.order_id);
+
+      // Redirect to Mercado Pago
       setTimeout(() => {
+        window.location.href = response.data.payment_link;
         clearCart();
-      }, 1000);
-    }, 2000);
+      }, 1500);
+
+    } catch (error) {
+      console.error('Error creating order:', error);
+      toast({
+        title: 'Error',
+        description: error.response?.data?.detail || 'Error al procesar el pago',
+        variant: 'destructive'
+      });
+      setProcessing(false);
+    }
   };
 
   if (cart.length === 0) {
